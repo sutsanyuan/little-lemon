@@ -1,0 +1,30 @@
+@import "variables";
+header {
+    top: 0;
+    display: fixed;
+}
+.container {
+    padding: 14px 0;
+    margin: auto;
+    max-width: 857px;
+    display: flex;
+    justify-content: space-between;
+    img {
+        max-height: 53px;
+    }
+}
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+    a {
+        font-family: Karla;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        color: $black;
+    }
+}
