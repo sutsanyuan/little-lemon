@@ -1,0 +1,39 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.hero-section {
+    background-color: $primary-green;
+    color: $white;
+
+    h1 {
+        color: $primary-lemon;
+        line-height: 100%;
+    }
+    h2 {
+        line-height: 100%;
+        margin-top: -14px;
+        margin-bottom: 14px;
+    }
+}
+.hero-section .container > div {
+    gap: 10px;
+    > div:first-child {
+        max-width: 334px;
+        // order: 2;
+        padding: 0 10px;
+    }
+    > div:nth-child(2) {
+        width: 100%;
+        max-width: 334px;
+        height: 356px;
+        border-radius: 16px;
+        background: url(../../assets/images/hero-cover.jpg) no-repeat center / cover;
+    }
+    @include flex-center(column);
+    align-items: center;
+    @include tablet {
+        @include flex-center;
+        width: 100%;
+        justify-content: space-between;
+    }
+}

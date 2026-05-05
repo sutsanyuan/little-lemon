@@ -1,4 +1,11 @@
 $black: #000;
-$white: "#fff";
+$white: #fff;
 $primary-lemon: #f4ce14;
 $primary-green: #495e57;
+
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+// 定義字體變數
+$font-primary: "Markazi Text", serif; // 用於標題 (h1, h2)
+$font-secondary: "Karla", sans-serif; // 用於內文 (p, span, button)
