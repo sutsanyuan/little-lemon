@@ -1,9 +1,9 @@
 import "./styles/App.scss";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
-import Home from "./components/pages/HomePage/Home";
+import Home from "./pages/HomePage/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Reservation from "./components/pages/ReservationPage/Reservation";
+import Reservation from "./pages/ReservationPage/Reservation";
 function App() {
     return (
         <>

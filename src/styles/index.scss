@@ -1,0 +1,55 @@
+// 這裡順序很重要！變數必須最先引入，因為後面的檔案會用到它
+@use "variables" as *;
+@use "mixins" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;500&family=Karla:wght@400;700&display=swap");
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+        "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: $primary-green;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+
+    @include tablet {
+        max-width: 720px;
+    }
+    @include desktop {
+        max-width: 1140px;
+        padding: 0;
+    }
+}
+.display-title {
+    font-family: $font-primary;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+}
+.sub-heading {
+    font-family: $font-primary;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
