@@ -1,6 +1,8 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
-
+main {
+    width: 100%;
+}
 .hero-section {
     background-color: $primary-green;
     color: $white;
@@ -15,8 +17,9 @@
         margin-bottom: 14px;
     }
 }
+
 .hero-section .container > div {
-    gap: 10px;
+    gap: 40px;
     > div:first-child {
         max-width: 334px;
         // order: 2;
@@ -35,5 +38,31 @@
         @include flex-center;
         width: 100%;
         justify-content: space-between;
+        padding: 20px 0;
     }
+}
+.menu-section {
+    .row {
+        max-width: 334px;
+        margin: auto;
+        @include tablet {
+            max-width: none;
+        }
+        align-items: center;
+    }
+    h3 {
+        color: $black;
+    }
+}
+.menu-wrapper {
+    margin: 24px auto;
+    max-width: 334px;
+    @include flex-center(column);
+    @include tablet {
+        width: 100%;
+        max-width: none;
+        @include flex-center(row);
+    }
+
+    gap: 25px;
 }

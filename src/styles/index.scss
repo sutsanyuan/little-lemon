@@ -4,12 +4,9 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;500&family=Karla:wght@400;700&display=swap");
 
-*,
-*::before,
-*::after {
-    margin: 0;
+* {
     padding: 0;
-    box-sizing: border-box;
+    margin: 0;
 }
 body {
     margin: 0;
@@ -23,21 +20,29 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
-
+//layout
 .container {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 20px;
+    margin: 0 auto;
+    padding: 30px 20px;
 
     @include tablet {
         max-width: 720px;
+        padding: 48px 0;
     }
     @include desktop {
-        max-width: 1140px;
-        padding: 0;
+        width: 100%;
+        max-width: 960px;
     }
 }
+.row {
+    @include flex-center;
+    justify-content: space-between;
+}
+
+.mt-1 {
+    margin-top: 10px;
+}
+// Font
 .display-title {
     font-family: $font-primary;
     font-size: 64px;
@@ -51,5 +56,12 @@ code {
     font-size: 40px;
     font-style: normal;
     font-weight: 400;
+    line-height: normal;
+}
+.lead-text {
+    font-family: $font-secondary;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
     line-height: normal;
 }
