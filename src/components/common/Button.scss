@@ -1,0 +1,29 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.custom-button {
+    font-family: $font-secondary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border-radius: 8px; // 參考圖片的圓角
+    border: none;
+
+    cursor: pointer;
+    transition: opacity 0.2s;
+    gap: 10px; // 圖示與文字的間距
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    .button-icon {
+        display: flex;
+        align-items: center;
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
