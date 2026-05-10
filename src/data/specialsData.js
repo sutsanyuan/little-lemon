@@ -2,7 +2,7 @@ import GreekSaladImage from "../assets/images/Greek-salad.jpg";
 import BruchettaImage from "../assets/images/Bruchetta.jpg";
 import lemonDessertImage from "../assets/images/Lemon-dessert.jpg";
 
-export const specialsData = [
+const specialsData = [
     {
         id: 1,
         title: "Greek Salad",
@@ -28,3 +28,9 @@ export const specialsData = [
         image: lemonDessertImage,
     },
 ];
+export const fetchSpecials = ()=>{
+    return new Promise((resolve)=>{
+        //mocking delaying fetching
+        setTimeout(()=>{resolve(specialsData)},1000)
+    })
+};
