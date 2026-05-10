@@ -1,11 +1,15 @@
-import React from "react";
+
 import Button from "../../components/common/Button";
 import MenuCard from "../../components/common/MenuCard";
+import useFetch from "../../hooks/useFetch";
 
-import { specialsData } from "../../data/specialsData";
+import { fetchSpecials } from "../../data/specialsData";
 
 export default function Specials() {
-    return (
+
+    const {data:items, loading} = useFetch(fetchSpecials);
+
+ return (
         <section className="menu-section">
             <div className="container">
                 <div className="row">
@@ -14,7 +18,7 @@ export default function Specials() {
                 </div>
 
                 <div className="menu-wrapper">
-                    {specialsData.map((dish) => (
+                    {loading? <p>loading data...</p>:items.map((dish) => (
                         <MenuCard
                             key={dish.id}
                             image={dish.image}
@@ -23,6 +27,7 @@ export default function Specials() {
                             description={dish.description}
                         />
                     ))}
+
                 </div>
             </div>
         </section>
