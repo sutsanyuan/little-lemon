@@ -2,7 +2,7 @@ import React from "react";
 import TestimonialCard from "../../components/common/TestimonialCard";
 import useFetch from "../../hooks/useFetch";
 import { fetchTestimonials } from "../../data/testimonialsData";
-
+import Carousel from "../../components/common/Carousel";
 export default function Testimonials() {
     const { data: testimonials, loading } = useFetch(fetchTestimonials);
     //here 0512
@@ -13,9 +13,21 @@ export default function Testimonials() {
                 <div className="container">
                     <hr></hr>
                     <h3 className="section-title">Testimonials</h3>
-                    <div className="testimonial-wrapper">{}</div>
-
-                    <TestimonialCard></TestimonialCard>
+                    <Carousel>
+                        {loading ? (
+                            <p>loading data...</p>
+                        ) : (
+                            testimonials.map((testimonial) => (
+                                <TestimonialCard
+                                    key={testimonial.id}
+                                    image={testimonial.image}
+                                    name={testimonial.name}
+                                    point={testimonial.point}
+                                    comment={testimonial.comment}
+                                />
+                            ))
+                        )}
+                    </Carousel>
                 </div>
             </section>
         </div>

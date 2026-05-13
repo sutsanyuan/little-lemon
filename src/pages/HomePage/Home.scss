@@ -66,6 +66,14 @@ main {
 
     gap: 25px;
 }
+.testimonial-wrapper {
+    @include flex-center(row);
+    gap: 25px;
+    article {
+        width: 100%;
+        max-width: 256px;
+    }
+}
 .container {
     hr {
         margin-bottom: 55px;
