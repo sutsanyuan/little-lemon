@@ -1,7 +1,7 @@
 import React from "react";
 import starImage from "../../assets/icons/star.svg";
 
-export default function TestimonialCard({ image, name, comment }) {
+export default function TestimonialCard({ image, name, point,comment }) {
     return (
         <article className="special-card">
             <div className="card-header">
