@@ -2,6 +2,7 @@
 @use "../../styles/mixins" as *;
 main {
     width: 100%;
+    background: $secondary-white;
 }
 .hero-section {
     background-color: $primary-green;
