@@ -1,3 +1,5 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
 // Carousel.scss
 .carousel-container {
     display: flex;
@@ -7,13 +9,46 @@
     -webkit-overflow-scrolling: touch; // iOS 滑動優化
     gap: 20px;
     padding: 20px 0;
+    align-items: stretch;
 
     &::-webkit-scrollbar {
         display: none; // 隱藏醜醜的捲軸
     }
 
     .carousel-item {
-        flex: 0 0 300px; // 禁止縮放，固定每張卡片寬度
+        flex: 0 0 256px;
+
         scroll-snap-align: center; // 停止時，卡片對齊容器中心
+    }
+    // 拖曳時暫時關閉 scroll-behavior，避免手感卡頓
+    &:active {
+        scroll-snap-type: none;
+        scroll-behavior: auto;
+    }
+    user-select: none; // 禁止選取文字
+    -webkit-user-drag: none; // 禁止圖片被拖出來
+
+    img {
+        pointer-events: none; // 避免圖片被當成可拖動資源，干擾滑動
+    }
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+
+    .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #ccc;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &.active {
+            background-color: #495e57; // Little Lemon Green
+        }
     }
 }
