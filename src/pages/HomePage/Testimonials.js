@@ -5,7 +5,6 @@ import { fetchTestimonials } from "../../data/testimonialsData";
 import Carousel from "../../components/common/Carousel";
 export default function Testimonials() {
     const { data: testimonials, loading } = useFetch(fetchTestimonials);
-    //here 0512
 
     return (
         <div>
@@ -13,7 +12,7 @@ export default function Testimonials() {
                 <div className="container">
                     <hr></hr>
                     <h3 className="section-title">Testimonials</h3>
-                    <Carousel>
+                    <Carousel showButtons={false}>
                         {loading ? (
                             <p>loading data...</p>
                         ) : (

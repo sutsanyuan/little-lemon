@@ -1,0 +1,13 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+.album {
+    display: block;
+    padding: 0;
+    border: red solid 1px;
+    border-radius: 16px;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+    }
+}
