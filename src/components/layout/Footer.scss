@@ -1,0 +1,50 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+footer {
+    background: $black;
+    ul {
+        display: flex;
+        flex-direction: column; // 👈 關鍵：在這裡改成垂直排列！
+        gap: 12px; // 項目之間的間距
+        padding: 0;
+        margin: 0;
+        list-style: none; // 拔掉點點
+    }
+    a,
+    li {
+        color: $white;
+        text-decoration: none;
+        @include hightlight-text;
+        &:hover {
+            color: $primary-lemon;
+        }
+        list-style: none;
+    }
+    h6 {
+        @include section-categories;
+        margin-bottom: 12px;
+    }
+}
+.footer-content {
+    color: $white;
+    h6 {
+        color: $white;
+    }
+    gap: 40px;
+    @include flex-center(column);
+    align-items: center;
+    @include tablet {
+        @include flex-center;
+        width: 100%;
+        justify-content: space-between;
+        align-items: start;
+        padding: 20px 0;
+    }
+    .footer-section {
+        width: 90%;
+        @include tablet {
+            width: 100%;
+        }
+    }
+}

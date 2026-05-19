@@ -80,3 +80,22 @@ main {
         margin-bottom: 55px;
     }
 }
+.story-section {
+    h3 {
+        white-space: nowrap;
+    }
+    .container {
+        > article {
+            gap: 40px;
+            @include flex-center(column);
+            align-items: center;
+            @include tablet {
+                @include flex-center;
+                width: 100%;
+                justify-content: space-between;
+                align-items: start;
+                padding: 20px 0;
+            }
+        }
+    }
+}

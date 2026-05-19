@@ -16,3 +16,20 @@
     justify-content: center;
     align-self: center;
 }
+
+@mixin section-categories {
+    /* Section Categories */
+    font-family: Karla;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-transform: capitalize;
+}
+@mixin hightlight-text {
+    font-family: Karla;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}

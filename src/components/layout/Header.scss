@@ -23,32 +23,31 @@ header {
             background: none;
         }
     }
-}
-
-nav ul {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    list-style: none;
-    a {
-        font-family: Karla;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        text-decoration: none;
-        color: $black;
+    nav ul {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        list-style: none;
+        a {
+            font-family: Karla;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            text-decoration: none;
+            color: $black;
+        }
     }
 }
+
 @media only screen and (max-width: 768px) {
     header {
         .container {
             flex-direction: column;
             align-items: center;
         }
-    }
-
-    nav ul {
-        flex-direction: column;
+        nav ul {
+            flex-direction: column;
+        }
     }
 }

@@ -3,11 +3,12 @@
 .album {
     display: block;
     padding: 0;
-    border: red solid 1px;
+
     border-radius: 16px;
     overflow: hidden;
 
     img {
         width: 100%;
+        display: block; //img 預設是 inline >有 line height
     }
 }

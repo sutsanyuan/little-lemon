@@ -9,7 +9,7 @@ export default function OurStory() {
     console.log("檢查 stories 資料：", stories);
     return (
         <div>
-            <section className="">
+            <section className="story-section">
                 <div className="container">
                     <hr></hr>
                     <Carousel showButtons={false} showDots={false}>
@@ -24,6 +24,14 @@ export default function OurStory() {
                             ))
                         )}
                     </Carousel>
+                    <article>
+                        <h3 className="section-title">Our Story</h3>
+                        <p>
+                            Founded by Chicago natives Adrian and Mario, Little Lemon brings you
+                            authentic Mediterranean flavors, crafted with passion and the freshest
+                            local ingredients.
+                        </p>
+                    </article>
                 </div>
             </section>
         </div>
