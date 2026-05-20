@@ -1,4 +1,9 @@
 @use "variables" as *;
+@mixin mobile {
+    @media (min-width: #{$mobile-width}) {
+        @content;
+    }
+}
 @mixin tablet {
     @media (min-width: #{$tablet-width}) {
         @content;
