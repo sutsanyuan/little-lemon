@@ -39,23 +39,36 @@ footer {
     }
 }
 .footer-content {
+    flex-wrap: wrap;
+
+    > * {
+        max-width: 334px;
+    }
     color: $white;
     h6 {
         color: $white;
     }
     gap: 40px;
-    @include flex-center(column);
+    @include flex-center();
+    flex-wrap: wrap;
 
     align-items: center;
+    @include mobile {
+        > * {
+            max-width: 150px;
+        }
+    }
     @include tablet {
         @include flex-center;
         width: 100%;
         justify-content: space-between;
         align-items: start;
         padding: 20px 0;
+        flex-wrap: nowrap;
     }
     .footer-logo {
         width: 90%;
+
         @include tablet {
             width: 100%;
         }
