@@ -1,5 +1,6 @@
 import React from "react";
 import "./Button.scss";
+import { Link } from "react-router-dom";
 
 export default function Button({
     children,
@@ -9,6 +10,7 @@ export default function Button({
     textColor,
     onClick,
     className = "",
+    to,
 }) {
     let tc = textColor;
     let bc = backgroundColor;
@@ -20,6 +22,18 @@ export default function Button({
     }
     const style = { backgroundColor: bc, color: tc };
 
+    if (to) {
+        return (
+            <Link to={to} className={`custom-button ${className}`} style={style}>
+                {showIcon && icon && (
+                    <span className="button-icon">
+                        <img src={icon} alt="icon" />
+                    </span>
+                )}
+                {children}
+            </Link>
+        );
+    }
     return (
         <button className={`custom-button ${className}`} onClick={onClick} style={style}>
             {showIcon && icon && (

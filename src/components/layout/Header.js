@@ -25,6 +25,13 @@ export default function Header() {
         }
     };
 
+    //專門關閉選單的 function
+    const closeMenu = () => {
+        if (window.innerWidth < 768) {
+            setIsOpen(false);
+        }
+    };
+
     return (
         <header>
             <div className="container">
@@ -34,8 +41,8 @@ export default function Header() {
                         ☰
                     </button>
                 )}
-
-                {isOpen && <Nav />}
+                {/* Props Drilling */}
+                {isOpen && <Nav onLinkClick={closeMenu} />}
             </div>
         </header>
     );

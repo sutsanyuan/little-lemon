@@ -7,7 +7,7 @@ header {
     .container {
         padding: 14px 0;
         margin: auto;
-        max-width: 857px;
+
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -21,6 +21,7 @@ header {
             right: 20px;
             border: none;
             background: none;
+            font-size: 30px;
         }
     }
     nav ul {
@@ -48,6 +49,9 @@ header {
         }
         nav ul {
             flex-direction: column;
+            justify-content: center;
+            height: calc(100vh - 75.59px);
+            gap: 20px;
         }
     }
 }

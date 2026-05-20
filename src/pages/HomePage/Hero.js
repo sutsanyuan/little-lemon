@@ -20,7 +20,8 @@ export default function Hero() {
                         <Button
                             className="mt-1"
                             icon={calanderIcon}
-                            backgroundColor="primary-lemon">
+                            backgroundColor="primary-lemon"
+                            to="/reservation">
                             Book a Table
                         </Button>
                     </div>
