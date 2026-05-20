@@ -2,8 +2,16 @@
 @use "../../styles/mixins" as *;
 
 .custom-button {
+    text-decoration: none;
+    color: $black;
+
     font-family: $font-secondary;
-    display: flex;
+
+    //關鍵：從 display: flex 改為 inline-flex
+    // inline-flex 會讓這個元素像文字一樣「只佔據必要的寬度」
+    // 但內部又保持 flex 的排版能力
+    display: inline-flex;
+
     align-items: center;
     justify-content: center;
     padding: 8px 12px;

@@ -3,6 +3,8 @@
 
 footer {
     background: $black;
+    padding: 67px 0;
+
     ul {
         display: flex;
         flex-direction: column; // 👈 關鍵：在這裡改成垂直排列！
@@ -25,6 +27,16 @@ footer {
         @include section-categories;
         margin-bottom: 12px;
     }
+    .contact-list {
+        li {
+            display: flex;
+            gap: 7px;
+            align-items: start;
+        }
+    }
+    .social-links {
+        flex-direction: row;
+    }
 }
 .footer-content {
     color: $white;
@@ -33,6 +45,7 @@ footer {
     }
     gap: 40px;
     @include flex-center(column);
+
     align-items: center;
     @include tablet {
         @include flex-center;
@@ -40,6 +53,12 @@ footer {
         justify-content: space-between;
         align-items: start;
         padding: 20px 0;
+    }
+    .footer-logo {
+        width: 90%;
+        @include tablet {
+            width: 100%;
+        }
     }
     .footer-section {
         width: 90%;
