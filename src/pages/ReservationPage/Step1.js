@@ -16,9 +16,9 @@ export default function Step1({ formData, updateFormData, nextStep }) {
             </section>
 
             <h3>Step 1: Choose Date & Time</h3>
-            <p>測試：目前選定人數為 {formData.guests}</p>
+            {/* <p>測試：目前選定人數為 {formData.guests}</p>
             <p>測試：date {format(new Date(formData.date), "EEE, MMM d")}</p>
-            <p>測試：time {formData.time}</p>
+            <p>測試：time {formData.time}</p> */}
             <button onClick={nextStep}>Next Step</button>
         </div>
     );
