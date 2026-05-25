@@ -9,7 +9,7 @@ export default function Reservation() {
     const [formData, setFormData] = useState({
         date: "",
         time: "",
-        guests: 1,
+        guests: { adult: "", kid: "" },
         occasion: "Birthday",
         name: "",
         email: "",
