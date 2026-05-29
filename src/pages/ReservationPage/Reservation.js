@@ -48,11 +48,9 @@ export default function Reservation() {
 
     return (
         <main className="container">
-            <h2>Reserve A Table</h2>
+            {renderStep()}
             {/* 這裡可以放你的進度條組件 */}
             <div className="progress-bar">Step {step} of 3</div>
-
-            {renderStep()}
         </main>
     );
 }

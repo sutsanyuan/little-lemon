@@ -15,7 +15,6 @@ export default function Step1({ formData, updateFormData, nextStep }) {
     const toggleDropdown = (name) => {
         setOpenDropdown(openDropdown === name ? null : name);
     };
-
     const handleGuestsChange = (type, value) => {
         updateFormData({
             guests: {
@@ -31,26 +30,34 @@ export default function Step1({ formData, updateFormData, nextStep }) {
     };
     return (
         <div>
-            <section className="infoSection"></section>
+            <section className="infoSection">
+                <h1>Resevre A Table</h1>
+                <h2>Savor Mediterranean flavors. Reserve your table today!</h2>
+            </section>
             <section className="formSection">
-                <AppDropdown
-                    label="Adult"
-                    icon={AdultIcon}
-                    options={GUEST_OPTIONS}
-                    value={getDisplayValue("Adult", formData.guests.adult)}
-                    onChange={(val) => handleGuestsChange("adult", val)}
-                    isOpen={openDropdown === "adults"}
-                    onToggle={() => toggleDropdown("adults")}></AppDropdown>
-                <AppDropdown
-                    label="Kid"
-                    icon={KidIcon}
-                    options={GUEST_OPTIONS}
-                    value={getDisplayValue("Kid", formData.guests.adult)}
-                    onChange={(val) => handleGuestsChange("kid", val)}
-                    isOpen={openDropdown === "kids"}
-                    onToggle={() => toggleDropdown("kids")}></AppDropdown>
+                <h3>Reservation Details</h3>
+                <h4>Number of Dinners</h4>
+                <div className="inputGroupRow">
+                    <AppDropdown
+                        label="Adult"
+                        icon={AdultIcon}
+                        options={GUEST_OPTIONS}
+                        value={getDisplayValue("Adult", formData.guests.adult)}
+                        onChange={(val) => handleGuestsChange("adult", val)}
+                        isOpen={openDropdown === "adults"}
+                        onToggle={() => toggleDropdown("adults")}></AppDropdown>
+                    <AppDropdown
+                        label="Kid"
+                        icon={KidIcon}
+                        options={GUEST_OPTIONS}
+                        value={getDisplayValue("Kid", formData.guests.adult)}
+                        onChange={(val) => handleGuestsChange("kid", val)}
+                        isOpen={openDropdown === "kids"}
+                        onToggle={() => toggleDropdown("kids")}></AppDropdown>
+                </div>
+                <h4>Dining Date</h4>
                 <CustomDateInput formData={formData} updateFormData={updateFormData} />
-
+                <h4>Require Booth</h4>
                 <TimePicker selectedTime={formData.time} onTimeSelect={handleTimeSelect} />
             </section>
 
