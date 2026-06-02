@@ -10,6 +10,7 @@ export default function Reservation() {
         date: "",
         time: "",
         guests: { adult: "", kid: "" },
+        isBoothRequest: false,
         occasion: "Birthday",
         name: "",
         email: "",
@@ -47,10 +48,14 @@ export default function Reservation() {
     };
 
     return (
-        <main className="container">
-            {renderStep()}
-            {/* 這裡可以放你的進度條組件 */}
-            <div className="progress-bar">Step {step} of 3</div>
+        <main>
+            <section className="reservationBlock">
+                <div className="container">
+                    {renderStep()}
+                    {/* 這裡可以放你的進度條組件 */}
+                    <div className="progress-bar">Step {step} of 3</div>
+                </div>
+            </section>
         </main>
     );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import { format } from "date-fns";
+import arrowIcon from "../../assets/icons/arrowDown.svg";
 import "react-datepicker/dist/react-datepicker.css"; // 引入基本樣式
 import "./DatePickerCustom.scss"; // 之後我們在這裡覆蓋 CSS
 
@@ -15,7 +16,11 @@ export default function CustomDateInput({ formData, updateFormData }) {
         <div className="custom-datepicker-container">
             {/* 顯示欄位 */}
             <div className="input-box" onClick={() => setIsOpen(!isOpen)}>
-                {formData.date ? format(new Date(formData.date), "EEE, MMM d") : "Pick a date"}
+                <span>
+                    {" "}
+                    {formData.date ? format(new Date(formData.date), "EEE, MMM d") : "Pick a date"}
+                </span>
+                <img src={arrowIcon} alt="arrow" className={`arrow ${isOpen ? "rotate" : ""}`} />
             </div>
             {/* 控制日曆開關的邏輯 */}
             {isOpen && (

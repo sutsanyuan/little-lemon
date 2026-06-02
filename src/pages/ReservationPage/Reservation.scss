@@ -1,0 +1,46 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+h1 {
+    @include display-title;
+}
+h2 {
+    @include lead-text;
+}
+h3 {
+    @include section-title;
+}
+h4 {
+    @include section-categories;
+    color: $white;
+}
+.reservationBlock {
+    background: $primary-green;
+    main {
+        background: none;
+    }
+}
+.formSection {
+    width: 100%;
+    max-width: 359px;
+}
+.stepBlock {
+    background-color: none;
+}
+.inputGroupRow {
+    display: flex;
+    // justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+    gap: $gap;
+    > div {
+        flex-grow: 1;
+    }
+}
+@include mobile {
+    .stepBlock {
+        display: flex;
+
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+}

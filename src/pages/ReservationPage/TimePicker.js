@@ -1,6 +1,7 @@
 import React from "react";
 import "./TimePicker.scss";
-
+import "./Reservation.scss";
+import checkIcon from "../../assets/icons/check.svg";
 export default function TimePicker({ selectedTime, onTimeSelect }) {
     //define selectable time
     const timeSlots = [
@@ -20,6 +21,7 @@ export default function TimePicker({ selectedTime, onTimeSelect }) {
                                 className={selectedTime === time ? "selected" : ""}
                                 onClick={() => onTimeSelect(time)}>
                                 {time}
+                                {selectedTime === time ? <img src={checkIcon}></img> : ""}
                             </button>
                         ))}
                     </div>

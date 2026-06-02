@@ -1,0 +1,24 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: $gap;
+    button {
+        border: none;
+        display: flex;
+        padding: 12px 12px 12px 16px;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+
+        align-self: stretch;
+        border-radius: 6px;
+        background: $white;
+        width: calc((100% - $gap * 2) / 3);
+    }
+    .active {
+        border: 2px solid var(--green600, #638177);
+        background: var(--lemon-200, #fffbe7);
+    }
+}
