@@ -11,6 +11,7 @@
     border-radius: 8px;
     background: var(--white, #fff);
     .input-box {
+        color: $primary-green;
         box-sizing: border-box;
         display: flex;
         height: 44px;
@@ -20,20 +21,21 @@
         align-items: center;
         align-self: stretch;
     }
-}
-.date-picker-wrapper {
-    // 讓日曆背景變深綠色 (設計稿色系)
+
     .react-datepicker {
         background-color: $white;
         border: none;
         color: $black;
     }
-
-    // 把按鈕改成檸檬黃
     .react-datepicker__day--selected {
         background-color: $primary-lemon !important;
         color: $black;
     }
+}
+.date-picker-wrapper {
+    // 讓日曆背景變深綠色 (設計稿色系)
+
+    // 把按鈕改成檸檬黃
 
     // 還有 header 的文字顏色等...
 }

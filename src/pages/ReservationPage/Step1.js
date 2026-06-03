@@ -7,6 +7,7 @@ import AppDropdown from "../../components/common/AppDropdown";
 import AdultIcon from "../../assets/icons/Adults.svg";
 import KidIcon from "../../assets/icons/Kids.svg";
 import BooleanToggle from "../../components/common/BooleanToggle";
+import MapPic from "../../assets/images/map.png";
 export default function Step1({ formData, updateFormData, nextStep }) {
     const handleTimeSelect = (time) => {
         updateFormData({ time: time });
@@ -39,6 +40,14 @@ export default function Step1({ formData, updateFormData, nextStep }) {
                 <section className="infoSection">
                     <h1>Resevre A Table</h1>
                     <h2>Savor Mediterranean flavors. Reserve your table today!</h2>
+                    <a
+                        href="https://maps.app.goo.gl/UVUmCFR4USeb1feM7"
+                        target="_blank"
+                        rel="noreferrer">
+                        <picture className="map">
+                            <img src={MapPic}></img>
+                        </picture>
+                    </a>
                 </section>
                 <section className="formSection">
                     <h3>Reservation Details</h3>
@@ -56,7 +65,7 @@ export default function Step1({ formData, updateFormData, nextStep }) {
                             label="Kid"
                             icon={KidIcon}
                             options={GUEST_OPTIONS}
-                            value={getDisplayValue("Kid", formData.guests.adult)}
+                            value={getDisplayValue("Kid", formData.guests.kid)}
                             onChange={(val) => handleGuestsChange("kid", val)}
                             isOpen={openDropdown === "kids"}
                             onToggle={() => toggleDropdown("kids")}></AppDropdown>
@@ -64,11 +73,14 @@ export default function Step1({ formData, updateFormData, nextStep }) {
                     <h4>Dining Date</h4>
                     <CustomDateInput formData={formData} updateFormData={updateFormData} />
                     <h4>Require Booth</h4>
+
                     <BooleanToggle
                         value={formData.isBoothRequest}
                         onChange={(val) => {
                             updateFormData({ isBoothRequest: val });
                         }}></BooleanToggle>
+                    <hr></hr>
+                    <h3>Time</h3>
                     <TimePicker selectedTime={formData.time} onTimeSelect={handleTimeSelect} />
                 </section>
             </div>

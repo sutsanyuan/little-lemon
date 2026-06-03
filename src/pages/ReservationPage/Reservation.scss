@@ -12,11 +12,26 @@ h3 {
 h4 {
     @include section-categories;
     color: $white;
+    margin-top: 9px;
+    margin-bottom: 5px;
+}
+.formSection hr {
+    margin: 25px 0;
 }
 .reservationBlock {
     background: $primary-green;
     main {
         background: none;
+    }
+}
+.infoSection {
+    width: 100%;
+    max-width: 458px;
+    .map {
+        width: 100%;
+        img {
+            width: 100%;
+        }
     }
 }
 .formSection {
@@ -25,6 +40,7 @@ h4 {
 }
 .stepBlock {
     background-color: none;
+    gap: 40px;
 }
 .inputGroupRow {
     display: flex;

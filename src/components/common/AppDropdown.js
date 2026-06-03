@@ -7,7 +7,7 @@ export default function AppDropdown({ label, icon, options, value, onChange, isO
     return (
         <div className="custom-dropdown">
             {/* Title */}
-            <div className="dropdown-header" onClick={onToggle}>
+            <div className={`dropdown-header ${isOpen ? "active" : ""}`} onClick={onToggle}>
                 <img src={icon} alt="icon" />
                 <span>{displayText}</span>
                 <img src={arrowIcon} alt="arrow" className={`arrow ${isOpen ? "rotate" : ""}`} />

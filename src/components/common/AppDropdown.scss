@@ -24,4 +24,52 @@
     span {
         font-size: 16px;
     }
+    &.active {
+        background-color: $lemon-200;
+        border-radius: 8px 8px 0 0;
+    }
+}
+
+.custom-dropdown {
+    // 預設樣式：手機版 (Static/Relative)
+    position: relative;
+    width: 100%;
+
+    .dropdown-menu {
+        // 手機版：直接撐開，簡單且不佔據螢幕，體驗最好
+        /* 不使用 fixed 或 absolute */
+        position: relative;
+        width: 100%;
+        border-radius: 0 0 8px 8px;
+
+        /* 核心秘訣：設定最大高度與自動捲動 */
+        max-height: 40vh; /* 確保選單不會蓋住整個頁面 */
+        overflow-y: auto; /* 選項太多時，選單內部自己捲動 */
+
+        background: white;
+        li {
+            display: flex;
+            height: 40px;
+            box-sizing: border-box;
+            padding: 8px 12px;
+            align-items: center;
+            gap: 12px;
+            align-self: stretch;
+            &:hover {
+                background: $lemon-200;
+            }
+        }
+    }
+
+    // 當螢幕大於 768px (桌面版)
+
+    @include tablet {
+        .dropdown-menu {
+            position: absolute; // 改為絕對定位，懸浮在下方
+            top: 100%;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+        }
+    }
 }
