@@ -67,3 +67,12 @@
     font-weight: 500;
     line-height: normal;
 }
+@mixin card-title {
+    /* Card Title */
+    font-family: Karla;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+}
