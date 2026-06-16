@@ -21,7 +21,11 @@ export default function TimePicker({ selectedTime, onTimeSelect }) {
                                 className={selectedTime === time ? "selected" : ""}
                                 onClick={() => onTimeSelect(time)}>
                                 {time}
-                                {selectedTime === time ? <img src={checkIcon}></img> : ""}
+                                {selectedTime === time ? (
+                                    <img src={checkIcon} alt="checkIcon"></img>
+                                ) : (
+                                    ""
+                                )}
                             </button>
                         ))}
                     </div>
