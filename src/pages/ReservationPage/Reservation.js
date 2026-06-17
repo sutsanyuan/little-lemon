@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
+import { reservationReducer, initialReservationState } from "../../reducers/reservationReducer"; // 匯入邏輯
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
+import ProgressBar from "../../components/common/ProgressBar";
+
+const reservationSteps = [{ label: "Step 1" }, { label: "Step 2" }, { label: "Step 3" }];
 
 export default function Reservation() {
+    const [state, dispatch] = useReducer(reservationReducer, initialReservationState);
     const [step, setStep] = useState(1);
+    //準備改這裡 0617
     // 集中管理表單資料
     const [formData, setFormData] = useState({
         date: "",
@@ -56,6 +62,8 @@ export default function Reservation() {
                     <div className="progress-bar">Step {step} of 3</div>
                 </div>
             </section>
+
+            <ProgressBar steps={reservationSteps} currentStep={step} />
         </main>
     );
 }
