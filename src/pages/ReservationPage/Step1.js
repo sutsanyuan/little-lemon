@@ -1,34 +1,42 @@
 import React, { useState, useEffect } from "react";
-import CustomDateInput from "./CustomDateInput";
-import TimePicker from "./TimePicker";
+import { useReservation } from "../../hooks/useReservation";
+
 import { GUEST_OPTIONS } from "../../data/reservationOptions";
+
+import CustomDateInput from "./CustomDateInput";
 import AppDropdown from "../../components/common/AppDropdown";
+import TimePicker from "./TimePicker";
 import AdultIcon from "../../assets/icons/Adults.svg";
 import KidIcon from "../../assets/icons/Kids.svg";
 import BooleanToggle from "../../components/common/BooleanToggle";
+
 import MapPic from "../../assets/images/map.png";
 import LocationIcon from "../../assets/icons/location.svg";
 import PhoneIcon from "../../assets/icons/phone_lemon.svg";
 import HoursIcon from "../../assets/icons/hour_lemon.svg";
 export default function Step1({ formData, dispatch, nextStep }) {
-    const handleTimeSelect = (time) => {
-        dispatch({ type: "UPDATE_FIELD", payload: { time: time } });
-    };
+    // [新增] 初始化 Hook
+    const { updateGuests, updateDate, updateField } = useReservation(dispatch);
+
+    // const handleTimeSelect = (time) => {
+    //     dispatch({ type: "UPDATE_FIELD", payload: { time: time } });
+    // };
+
+    // const handleGuestsChange = (type, value) => {
+    //     dispatch({
+    //         type: "UPDATE_FIELD",
+    //         payload: {
+    //             guests: {
+    //                 ...formData.guests,
+    //                 [type]: value,
+    //             },
+    //         },
+    //     });
+    // };
 
     const [openDropdown, setOpenDropdown] = useState(null);
     const toggleDropdown = (name) => {
         setOpenDropdown(openDropdown === name ? null : name);
-    };
-    const handleGuestsChange = (type, value) => {
-        dispatch({
-            type: "UPDATE_FIELD",
-            payload: {
-                guests: {
-                    ...formData.guests,
-                    [type]: value,
-                },
-            },
-        });
     };
 
     const getDisplayValue = (type, val) => {
@@ -91,7 +99,7 @@ export default function Step1({ formData, dispatch, nextStep }) {
                             icon={AdultIcon}
                             options={GUEST_OPTIONS}
                             value={getDisplayValue("Adult", formData.guests.adult)}
-                            onChange={(val) => handleGuestsChange("adult", val)}
+                            onChange={(val) => updateGuests("adult", val)}
                             isOpen={openDropdown === "adults"}
                             onToggle={() => toggleDropdown("adults")}></AppDropdown>
                         <AppDropdown
@@ -99,12 +107,15 @@ export default function Step1({ formData, dispatch, nextStep }) {
                             icon={KidIcon}
                             options={GUEST_OPTIONS}
                             value={getDisplayValue("Kid", formData.guests.kid)}
-                            onChange={(val) => handleGuestsChange("kid", val)}
+                            onChange={(val) => updateGuests("kid", val)}
                             isOpen={openDropdown === "kids"}
                             onToggle={() => toggleDropdown("kids")}></AppDropdown>
                     </div>
                     <h4>Dining Date</h4>
-                    <CustomDateInput formData={formData} dispatch={dispatch} />
+                    <CustomDateInput
+                        selectedDate={formData.date}
+                        onDateChange={(date) => updateDate(date)}
+                    />
                     <h4>Require Booth</h4>
 
                     <BooleanToggle
@@ -117,7 +128,7 @@ export default function Step1({ formData, dispatch, nextStep }) {
                     <TimePicker
                         availableTimes={formData.availableTimes}
                         selectedTime={formData.time}
-                        onTimeSelect={handleTimeSelect}
+                        onTimeSelect={(time) => updateField({ time })}
                     />
                     <button className="formBtn" onClick={nextStep}>
                         Next Step
