@@ -6,11 +6,11 @@ import calenderIcon from "../../assets/icons/calender.svg";
 import "react-datepicker/dist/react-datepicker.css"; // 引入基本樣式
 import "./DatePickerCustom.scss"; // 之後我們在這裡覆蓋 CSS
 
-export default function CustomDateInput({ formData, updateFormData }) {
+export default function CustomDateInput({ formData, dispatch }) {
     const [isOpen, setIsOpen] = useState(false);
     // 當日期選定時，自動更新並收起
     const handleDateChange = (date) => {
-        updateFormData({ date: date.toISOString() });
+        dispatch({ type: "UPDATE_DATE", payload: date.toISOString() });
         setIsOpen(false);
     };
     return (

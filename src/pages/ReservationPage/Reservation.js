@@ -5,51 +5,51 @@ import Step2 from "./Step2";
 import Step3 from "./Step3";
 import ProgressBar from "../../components/common/ProgressBar";
 
-const reservationSteps = [{ label: "Step 1" }, { label: "Step 2" }, { label: "Step 3" }];
-
 export default function Reservation() {
-    const [state, dispatch] = useReducer(reservationReducer, initialReservationState);
     const [step, setStep] = useState(1);
+    const [state, dispatch] = useReducer(reservationReducer, initialReservationState);
+    const reservationSteps = [{ label: "Step 1" }, { label: "Step 2" }, { label: "Step 3" }];
     //準備改這裡 0617
     // 集中管理表單資料
-    const [formData, setFormData] = useState({
-        date: "",
-        time: "",
-        guests: { adult: "", kid: "" },
-        isBoothRequest: false,
-        occasion: "Birthday",
-        name: "",
-        email: "",
-        phone: "",
-    });
-    //更新函式組件
-    const updateFormData = (newData) => {
-        setFormData((prev) => ({ ...prev, ...newData }));
-    };
+    // const [formData, setFormData] = useState({
+    //     date: "",
+    //     time: "",
+    //     guests: { adult: "", kid: "" },
+    //     isBoothRequest: false,
+    //     occasion: "Birthday",
+    //     name: "",
+    //     email: "",
+    //     phone: "",
+    // });
+    // //更新函式組件
+    // const updateFormData = (newData) => {
+    //     setFormData((prev) => ({ ...prev, ...newData }));
+    // };
     //Render Steps
     const renderStep = () => {
         switch (step) {
             case 1:
                 return (
                     <Step1
-                        formData={formData}
-                        updateFormData={updateFormData}
+                        // 3. 傳遞 state 和 dispatch，取代原本的 formData 和 updateFormData
+                        formData={state}
+                        dispatch={dispatch}
                         nextStep={() => setStep(2)}
                     />
                 );
             case 2:
                 return (
                     <Step2
-                        formData={formData}
-                        updateFormData={updateFormData}
+                        formData={state}
+                        dispatch={dispatch}
                         prevStep={() => setStep(1)}
                         nextStep={() => setStep(3)}
                     />
                 );
             case 3:
-                return <Step3 formData={formData} />;
+                return <Step3 formData={state} />;
             default:
-                return <Step1 />;
+                return <Step1 formData={state} dispatch={dispatch} nextStep={() => setStep(2)} />;
         }
     };
 

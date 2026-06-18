@@ -8,9 +8,9 @@ import AdultIcon from "../../assets/icons/Adults.svg";
 import KidIcon from "../../assets/icons/Kids.svg";
 import BooleanToggle from "../../components/common/BooleanToggle";
 import MapPic from "../../assets/images/map.png";
-export default function Step1({ formData, updateFormData, nextStep }) {
+export default function Step1({ formData, dispatch, nextStep }) {
     const handleTimeSelect = (time) => {
-        updateFormData({ time: time });
+        dispatch({ type: "UPDATE_FIELD", payload: { time: time } });
     };
 
     const [openDropdown, setOpenDropdown] = useState(null);
@@ -18,10 +18,13 @@ export default function Step1({ formData, updateFormData, nextStep }) {
         setOpenDropdown(openDropdown === name ? null : name);
     };
     const handleGuestsChange = (type, value) => {
-        updateFormData({
-            guests: {
-                ...formData.guests,
-                [type]: value,
+        dispatch({
+            type: "UPDATE_FIELD",
+            payload: {
+                guests: {
+                    ...formData.guests,
+                    [type]: value,
+                },
             },
         });
     };
@@ -71,17 +74,21 @@ export default function Step1({ formData, updateFormData, nextStep }) {
                             onToggle={() => toggleDropdown("kids")}></AppDropdown>
                     </div>
                     <h4>Dining Date</h4>
-                    <CustomDateInput formData={formData} updateFormData={updateFormData} />
+                    <CustomDateInput formData={formData} dispatch={dispatch} />
                     <h4>Require Booth</h4>
 
                     <BooleanToggle
                         value={formData.isBoothRequest}
                         onChange={(val) => {
-                            updateFormData({ isBoothRequest: val });
+                            dispatch({ type: "UPDATE_FIELD", payload: { isBoothRequest: val } });
                         }}></BooleanToggle>
                     <hr></hr>
                     <h3>Time</h3>
-                    <TimePicker selectedTime={formData.time} onTimeSelect={handleTimeSelect} />
+                    <TimePicker
+                        availableTimes={formData.availableTimes}
+                        selectedTime={formData.time}
+                        onTimeSelect={handleTimeSelect}
+                    />
                 </section>
             </div>
 
