@@ -4,11 +4,11 @@ const getAvailableTimesByDate = (dateString) => {
     const day = date.getDay(); //0 => Sunday, 6 => Sat
     if (day === 0 || day === 6) {
         return [
-            { label: "Noon", times: ["11:00", "12:00", "13:00"] },
-            { label: "Evening", times: ["17:00", "18:00", "19:00"] },
+            { label: "Noon", times: ["11:00", "11:30", "12:00", "12:30", "13:00"] },
+            { label: "Evening", times: ["17:00", "17:30", "18:00", "18:30", "19:00"] },
         ];
     }
-    return [{ label: "Evening", times: ["17:00", "18:00", "19:00"] }];
+    return [{ label: "Evening", times: ["17:00", "17:30", "18:00", "18:30", "19:00"] }];
 };
 // 這裡存放你的初始狀態和邏輯
 export const initialReservationState = {

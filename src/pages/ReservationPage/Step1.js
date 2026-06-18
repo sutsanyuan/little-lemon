@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import CustomDateInput from "./CustomDateInput";
 import TimePicker from "./TimePicker";
-import { format } from "date-fns";
-import { GUEST_OPTIONS, OCCASION_OPTIONS } from "../../data/reservationOptions";
+import { GUEST_OPTIONS } from "../../data/reservationOptions";
 import AppDropdown from "../../components/common/AppDropdown";
 import AdultIcon from "../../assets/icons/Adults.svg";
 import KidIcon from "../../assets/icons/Kids.svg";
 import BooleanToggle from "../../components/common/BooleanToggle";
 import MapPic from "../../assets/images/map.png";
+import LocationIcon from "../../assets/icons/location.svg";
+import PhoneIcon from "../../assets/icons/phone_lemon.svg";
+import HoursIcon from "../../assets/icons/hour_lemon.svg";
 export default function Step1({ formData, dispatch, nextStep }) {
     const handleTimeSelect = (time) => {
         dispatch({ type: "UPDATE_FIELD", payload: { time: time } });
@@ -46,11 +48,39 @@ export default function Step1({ formData, dispatch, nextStep }) {
                     <a
                         href="https://maps.app.goo.gl/UVUmCFR4USeb1feM7"
                         target="_blank"
-                        rel="noreferrer">
-                        <picture className="map">
+                        rel="noreferrer"
+                        className="map">
+                        <picture>
                             <img src={MapPic}></img>
                         </picture>
                     </a>
+                    <ul className="infoList">
+                        <li>
+                            <img src={LocationIcon} />
+                            <span>
+                                <h4>Location</h4>
+                                <p>1340 W Fulton St, Chicago, IL 60607 USA</p>
+                            </span>
+                        </li>
+                        <li>
+                            <img src={PhoneIcon} />
+                            <span>
+                                <h4>Phone Number</h4>
+                                <p>+1 000 000 000</p>
+                            </span>
+                        </li>
+                        <li>
+                            <img src={HoursIcon} />
+                            <span>
+                                <h4>Hours</h4>
+                                <p>
+                                    11-00-14:00
+                                    <br />
+                                    17:00-20:00
+                                </p>
+                            </span>
+                        </li>
+                    </ul>
                 </section>
                 <section className="formSection">
                     <h3>Reservation Details</h3>
@@ -89,14 +119,11 @@ export default function Step1({ formData, dispatch, nextStep }) {
                         selectedTime={formData.time}
                         onTimeSelect={handleTimeSelect}
                     />
+                    <button className="formBtn" onClick={nextStep}>
+                        Next Step
+                    </button>
                 </section>
             </div>
-
-            <h3>Step 1: Choose Date & Time</h3>
-            {/* <p>測試：目前選定人數為 {formData.guests}</p>
-            <p>測試：date {format(new Date(formData.date), "EEE, MMM d")}</p>
-            <p>測試：time {formData.time}</p> */}
-            <button onClick={nextStep}>Next Step</button>
         </div>
     );
 }
