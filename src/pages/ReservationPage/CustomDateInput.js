@@ -21,9 +21,7 @@ export default function CustomDateInput({ selectedDate, onDateChange }) {
                 <img src={calenderIcon}></img>
                 <span>
                     {" "}
-                    {selectedDate.date
-                        ? format(new Date(selectedDate.date), "EEE, MMM d")
-                        : "Pick a date"}
+                    {selectedDate ? format(new Date(selectedDate), "EEE, MMM d") : "Pick a date"}
                 </span>
                 <img src={arrowIcon} alt="arrow" className={`arrow ${isOpen ? "rotate" : ""}`} />
             </div>
@@ -31,7 +29,7 @@ export default function CustomDateInput({ selectedDate, onDateChange }) {
             {isOpen && (
                 <div className="calender-popup">
                     <DatePicker
-                        selected={selectedDate.date ? new Date(selectedDate.date) : null}
+                        selected={selectedDate ? new Date(selectedDate) : null}
                         onChange={handleDateChange}
                         inline
                     />

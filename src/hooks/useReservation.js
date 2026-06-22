@@ -7,8 +7,8 @@ export const useReservation = (dispatch) => {
     const updateDate = (date) => {
         dispatch({ type: "UPDATE_DATE", payload: date });
     };
-    const updateField = (data) => {
-        dispatch({ type: "UPDATE_FIELD", payload: data });
+    const updateField = (key, value) => {
+        dispatch({ type: "UPDATE_FIELD", payload: { [key]: value } });
     };
     return { updateGuests, updateDate, updateField };
 };

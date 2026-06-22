@@ -44,7 +44,7 @@ export default function Step1({ formData, dispatch, nextStep }) {
         return `${val} ${val > 1 ? type + "s" : type}`;
     };
     useEffect(() => {
-        console.log("formData 已經更新:", formData);
+        console.log("formData(state) 已經更新:", formData);
     }, [formData]);
 
     return (
@@ -120,15 +120,13 @@ export default function Step1({ formData, dispatch, nextStep }) {
 
                     <BooleanToggle
                         value={formData.isBoothRequest}
-                        onChange={(val) => {
-                            dispatch({ type: "UPDATE_FIELD", payload: { isBoothRequest: val } });
-                        }}></BooleanToggle>
+                        onChange={(val) => updateField("isBoothRequest", val)}></BooleanToggle>
                     <hr></hr>
                     <h3>Time</h3>
                     <TimePicker
                         availableTimes={formData.availableTimes}
                         selectedTime={formData.time}
-                        onTimeSelect={(time) => updateField({ time })}
+                        onTimeSelect={(time) => updateField("time", time)}
                     />
                     <button className="formBtn" onClick={nextStep}>
                         Next Step
