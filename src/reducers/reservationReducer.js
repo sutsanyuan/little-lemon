@@ -30,6 +30,8 @@ export function reservationReducer(state, action) {
 
         case "UPDATE_DATE":
             const newDate = action.payload;
+            // 防呆：確保 date 是有效的
+            if (!newDate) return state;
             // 關鍵：在這裡重新計算時段
             const newAvailableTimes = getAvailableTimesByDate(newDate);
             // 在這裡加入你未來需要對接 API 的邏輯
@@ -39,6 +41,8 @@ export function reservationReducer(state, action) {
                 time: "", // 日期變，清空時間
                 availableTimes: newAvailableTimes, // 更新時段
             };
+        case "UPDATE_GUESTS":
+            return { ...state, guests: { ...state.guests, ...action.payload } };
 
         default:
             return state;

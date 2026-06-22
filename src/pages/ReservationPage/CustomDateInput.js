@@ -6,11 +6,12 @@ import calenderIcon from "../../assets/icons/calender.svg";
 import "react-datepicker/dist/react-datepicker.css"; // 引入基本樣式
 import "./DatePickerCustom.scss"; // 之後我們在這裡覆蓋 CSS
 
-export default function CustomDateInput({ formData, dispatch }) {
+export default function CustomDateInput({ selectedDate, onDateChange }) {
     const [isOpen, setIsOpen] = useState(false);
     // 當日期選定時，自動更新並收起
     const handleDateChange = (date) => {
-        dispatch({ type: "UPDATE_DATE", payload: date.toISOString() });
+        // [修改]：直接觸發父層傳來的函式，不再直接呼叫 dispatch
+        onDateChange(date.toISOString());
         setIsOpen(false);
     };
     return (
@@ -20,7 +21,7 @@ export default function CustomDateInput({ formData, dispatch }) {
                 <img src={calenderIcon}></img>
                 <span>
                     {" "}
-                    {formData.date ? format(new Date(formData.date), "EEE, MMM d") : "Pick a date"}
+                    {selectedDate ? format(new Date(selectedDate), "EEE, MMM d") : "Pick a date"}
                 </span>
                 <img src={arrowIcon} alt="arrow" className={`arrow ${isOpen ? "rotate" : ""}`} />
             </div>
@@ -28,7 +29,7 @@ export default function CustomDateInput({ formData, dispatch }) {
             {isOpen && (
                 <div className="calender-popup">
                     <DatePicker
-                        selected={formData.date ? new Date(formData.date) : null}
+                        selected={selectedDate ? new Date(selectedDate) : null}
                         onChange={handleDateChange}
                         inline
                     />
