@@ -10,7 +10,7 @@ export default function Reservation() {
     const [state, dispatch] = useReducer(reservationReducer, initialReservationState);
     const reservationSteps = [{ label: "Step 1" }, { label: "Step 2" }, { label: "Step 3" }];
     //準備改這裡 0617
-    // 集中管理表單資料
+    // 使用 useReducer 取代原本的 useState 集中管理表單資料
     // const [formData, setFormData] = useState({
     //     date: "",
     //     time: "",
