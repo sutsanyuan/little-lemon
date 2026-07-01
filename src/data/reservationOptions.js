@@ -13,3 +13,9 @@ export const OCCASION_OPTIONS = [
     { label: "Engagement", value: "engagement" },
     { label: "Anniversary", value: "anniversary" },
 ];
+
+export const Gender_OPTIONS = [
+    { label: "Mr.", value: "Mr." },
+    { label: "Ms.", value: "Ms." },
+    { label: "N/A", value: "N/A" },
+];

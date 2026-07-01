@@ -17,10 +17,12 @@ export const initialReservationState = {
     guests: { adult: "", kid: "" },
     isBoothRequest: false,
     occasion: "Birthday",
-    name: "",
+    name: { firstName: "", lastName: "" },
+    gender: "",
     email: "",
     phone: "",
     availableTimes: getAvailableTimesByDate(new Date().toISOString()),
+    note: "",
 };
 
 export function reservationReducer(state, action) {
@@ -43,7 +45,8 @@ export function reservationReducer(state, action) {
             };
         case "UPDATE_GUESTS":
             return { ...state, guests: { ...state.guests, ...action.payload } };
-
+        case "UPDATE_NAME":
+            return { ...state, name: { ...state.name, ...action.payload } };
         default:
             return state;
     }

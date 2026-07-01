@@ -3,12 +3,14 @@ header {
     background: $white;
     top: 0;
     position: fixed;
+    z-index: 99;
     width: 100%;
     .container {
         padding: 14px 0;
         margin: auto;
 
         display: flex;
+
         justify-content: space-between;
         align-items: center;
         position: relative;
@@ -17,6 +19,7 @@ header {
         }
         .toggle-menu {
             position: absolute;
+
             top: 20px;
             right: 20px;
             border: none;

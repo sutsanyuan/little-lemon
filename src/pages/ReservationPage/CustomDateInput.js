@@ -6,7 +6,7 @@ import calenderIcon from "../../assets/icons/calender.svg";
 import "react-datepicker/dist/react-datepicker.css"; // 引入基本樣式
 import "./DatePickerCustom.scss"; // 之後我們在這裡覆蓋 CSS
 
-export default function CustomDateInput({ selectedDate, onDateChange }) {
+export default function CustomDateInput({ selectedDate, onDateChange, isError }) {
     const [isOpen, setIsOpen] = useState(false);
     // 當日期選定時，自動更新並收起
     const handleDateChange = (date) => {
@@ -15,9 +15,9 @@ export default function CustomDateInput({ selectedDate, onDateChange }) {
         setIsOpen(false);
     };
     return (
-        <div className="custom-datepicker-container">
+        <div className={`custom-datepicker-container ${isError ? "errorInput" : ""}`}>
             {/* 顯示欄位 */}
-            <div className="input-box" onClick={() => setIsOpen(!isOpen)}>
+            <div className="input-box " onClick={() => setIsOpen(!isOpen)}>
                 <img src={calenderIcon}></img>
                 <span>
                     {" "}

@@ -89,6 +89,11 @@ h4 {
         flex-grow: 1;
     }
 }
+.phoneInputRow {
+    display: grid;
+    grid-template-columns: 81px 1fr;
+    gap: $gap;
+}
 .formBtn {
     display: block;
     width: 100%;
@@ -112,6 +117,14 @@ h4 {
     font-weight: 700;
     line-height: 24px; /* 133.333% */
     letter-spacing: -0.18px;
+}
+.errors {
+    color: $primary-lemon;
+    margin-top: 4px;
+}
+.errorInput {
+    background-color: $lemon-200;
+    border: solid 2px $primary-lemon;
 }
 @include mobile {
     .stepBlock {
