@@ -14,7 +14,21 @@ import MapPic from "../../assets/images/map.png";
 import LocationIcon from "../../assets/icons/location.svg";
 import PhoneIcon from "../../assets/icons/phone_lemon.svg";
 import HoursIcon from "../../assets/icons/hour_lemon.svg";
+import { validateStep1 } from "../../utils/validate";
+import { handleStepConfirm } from "../../utils/stepHandler";
 export default function Step1({ formData, dispatch, nextStep }) {
+    const [errors, setErrors] = useState({});
+    //清除錯誤
+    const clearError = (field) => {
+        setErrors((prev) => {
+            const next = { ...prev };
+            delete next[field];
+            return next;
+        });
+    };
+    const onConfirm = () => {
+        handleStepConfirm(formData, validateStep1, setErrors, nextStep);
+    };
     // [新增] 初始化 Hook
     const { updateGuests, updateDate, updateField } = useReservation(dispatch);
 
@@ -43,6 +57,7 @@ export default function Step1({ formData, dispatch, nextStep }) {
         if (!val) return type; // 還沒選就顯示 "Adult"
         return `${val} ${val > 1 ? type + "s" : type}`;
     };
+
     useEffect(() => {
         console.log("formData(state) 已經更新:", formData);
     }, [formData]);
@@ -99,9 +114,13 @@ export default function Step1({ formData, dispatch, nextStep }) {
                             icon={AdultIcon}
                             options={GUEST_OPTIONS}
                             value={getDisplayValue("Adult", formData.guests.adult)}
-                            onChange={(val) => updateGuests("adult", val)}
+                            onChange={(val) => {
+                                updateGuests("adult", val);
+                                clearError("guests");
+                            }}
                             isOpen={openDropdown === "adults"}
-                            onToggle={() => toggleDropdown("adults")}></AppDropdown>
+                            onToggle={() => toggleDropdown("adults")}
+                            isError={!!errors.guests}></AppDropdown>
                         <AppDropdown
                             label="Kid"
                             icon={KidIcon}
@@ -111,11 +130,17 @@ export default function Step1({ formData, dispatch, nextStep }) {
                             isOpen={openDropdown === "kids"}
                             onToggle={() => toggleDropdown("kids")}></AppDropdown>
                     </div>
+                    {errors.guests && <p className="errors">{errors.guests}</p>}
                     <h4>Dining Date</h4>
                     <CustomDateInput
                         selectedDate={formData.date}
-                        onDateChange={(date) => updateDate(date)}
+                        onDateChange={(date) => {
+                            updateDate(date);
+                            clearError("date");
+                        }}
+                        isError={errors.date ? true : false}
                     />
+                    {errors.date && <p className="errors">{errors.date}</p>}
                     <h4>Require Booth</h4>
 
                     <BooleanToggle
@@ -126,9 +151,13 @@ export default function Step1({ formData, dispatch, nextStep }) {
                     <TimePicker
                         availableTimes={formData.availableTimes}
                         selectedTime={formData.time}
-                        onTimeSelect={(time) => updateField("time", time)}
+                        onTimeSelect={(time) => {
+                            updateField("time", time);
+                            clearError("time");
+                        }}
                     />
-                    <button className="formBtn" onClick={nextStep}>
+                    {errors.time && <p className="errors">{errors.time}</p>}
+                    <button className="formBtn" onClick={onConfirm}>
                         Next Step
                     </button>
                 </section>
