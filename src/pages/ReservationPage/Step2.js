@@ -8,8 +8,9 @@ import AppTextArea from "../../components/common/AppTextArea";
 import OccasionIcon from "../../assets/icons/occasion.svg";
 import { validateStep2 } from "../../utils/validate";
 import { handleStepConfirm } from "../../utils/stepHandler";
+import BookingSummary from "./BookingSummary";
 
-export default function Step1({ formData, dispatch, nextStep }) {
+export default function Step1({ formData, dispatch, nextStep, prevStep }) {
     const [errors, setErrors] = useState({});
     const clearError = (field) => {
         setErrors((prev) => {
@@ -39,6 +40,7 @@ export default function Step1({ formData, dispatch, nextStep }) {
                 <section className="infoSection">
                     <h1>One Last Step</h1>
                     <h2>Enter your contact details and confirm the booking!</h2>
+                    <BookingSummary formData={formData} edit={prevStep}></BookingSummary>
                 </section>
                 <section className="formSection">
                     <h3>contact Details</h3>
