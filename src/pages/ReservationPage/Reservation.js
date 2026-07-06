@@ -1,5 +1,6 @@
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { reservationReducer, initialReservationState } from "../../reducers/reservationReducer"; // 匯入邏輯
+
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
@@ -7,9 +8,20 @@ import ProgressBar from "../../components/common/ProgressBar";
 
 export default function Reservation() {
     const [step, setStep] = useState(1);
-    const [state, dispatch] = useReducer(reservationReducer, initialReservationState);
+    const [state, dispatch] = useReducer(reservationReducer, initialReservationState, (initial) => {
+        try {
+            const savedData = localStorage.getItem("littleLemonBooking");
+            return savedData ? JSON.parse(savedData) : initial;
+        } catch (error) {
+            console.error("faild accecing localdata:", error);
+            return initial;
+        }
+    });
+    useEffect(() => {
+        localStorage.setItem("littleLemonBooking", JSON.stringify(state));
+    }, [state]);
     const reservationSteps = [{ label: "Step 1" }, { label: "Step 2" }, { label: "Step 3" }];
-    //準備改這裡 0617
+
     // 使用 useReducer 取代原本的 useState 集中管理表單資料
     // const [formData, setFormData] = useState({
     //     date: "",
@@ -25,6 +37,7 @@ export default function Reservation() {
     // const updateFormData = (newData) => {
     //     setFormData((prev) => ({ ...prev, ...newData }));
     // };
+
     //Render Steps
     const renderStep = () => {
         switch (step) {

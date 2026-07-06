@@ -10,7 +10,7 @@ import { validateStep2 } from "../../utils/validate";
 import { handleStepConfirm } from "../../utils/stepHandler";
 import BookingSummary from "./BookingSummary";
 
-export default function Step1({ formData, dispatch, nextStep, prevStep }) {
+export default function Step2({ formData, dispatch, nextStep, prevStep }) {
     const [errors, setErrors] = useState({});
     const clearError = (field) => {
         setErrors((prev) => {
