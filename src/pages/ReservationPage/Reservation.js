@@ -71,7 +71,6 @@ export default function Reservation() {
             <section className="reservationBlock">
                 <div className="container">
                     {renderStep()}
-                    {/* 這裡可以放你的進度條組件 */}
                     <div className="progress-bar">Step {step} of 3</div>
                 </div>
             </section>
