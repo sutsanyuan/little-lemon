@@ -53,10 +53,11 @@ export default function Step3({ formData }) {
                     href={getGoogleCalendarLink(formData)}
                     target="_blank"
                     rel="noreferrer"
-                    className="formBtn secondary">
+                    className="formBtn secondary"
+                    aria-label="On Click">
                     Add to Calendar
                 </a>
-                <button className="formBtn" onClick={() => navigate("/")}>
+                <button className="formBtn" onClick={() => navigate("/")} aria-label="On Click">
                     Back to Home
                 </button>
             </div>

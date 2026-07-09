@@ -10,6 +10,7 @@ export default function AppDropdown({
     isOpen,
     onToggle,
     isError,
+    id,
 }) {
     const displayText = value ? `${value}` : label;
 
@@ -22,7 +23,9 @@ export default function AppDropdown({
                 }`}
                 onClick={onToggle}>
                 {icon ? <img src={icon} alt="icon" /> : <span></span>}
-                <span>{displayText}</span>
+                <label htmlFor={id}>
+                    <span>{displayText}</span>
+                </label>
                 <img src={arrowIcon} alt="arrow" className={`arrow ${isOpen ? "rotate" : ""}`} />
             </div>
             {/* Dropdown content */}

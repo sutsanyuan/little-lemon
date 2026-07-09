@@ -8,7 +8,17 @@ describe("AppInput Component (Step 2 驗證)", () => {
     // Step 1: 測試 HTML5 屬性
     describe("Step 1: HTML5 Validation Attributes", () => {
         test("應該正確應用 HTML5 屬性 (如 required, type, min)", () => {
-            render(<AppInput label="Email" id="email" type="email" required min="1" max="10" />);
+            render(
+                <AppInput
+                    showLabel={true}
+                    label="Email"
+                    id="email"
+                    type="email"
+                    required
+                    min="1"
+                    max="10"
+                />
+            );
 
             const input = screen.getByLabelText(/email/i);
 
@@ -24,7 +34,7 @@ describe("AppInput Component (Step 2 驗證)", () => {
     describe("Step 2: Validation Logic & Error Display", () => {
         test("當 error prop 有值時，應該顯示錯誤訊息並應用 errorInput class", () => {
             const errorMessage = "Invalid input!";
-            render(<AppInput label="Test" id="test-input" error={errorMessage} />);
+            render(<AppInput showLabel={true} label="Test" id="test-input" error={errorMessage} />);
 
             // 驗證錯誤訊息文字
             const errorElement = screen.getByText(errorMessage);
@@ -37,7 +47,7 @@ describe("AppInput Component (Step 2 驗證)", () => {
         });
 
         test("當沒有 error prop 時，不應該顯示錯誤區塊", () => {
-            render(<AppInput label="Test" id="test-input" error={null} />);
+            render(<AppInput showLabel={true} label="Test" id="test-input" error={null} />);
 
             const errorElement = screen.queryByText(/invalid input!/i);
             expect(errorElement).not.toBeInTheDocument();
@@ -48,7 +58,9 @@ describe("AppInput Component (Step 2 驗證)", () => {
 
         test("onChange 應該要能正常被觸發", () => {
             const handleChange = jest.fn();
-            render(<AppInput label="Test" id="test-input" onChange={handleChange} />);
+            render(
+                <AppInput showLabel={true} label="Test" id="test-input" onChange={handleChange} />
+            );
 
             const input = screen.getByLabelText(/test/i);
             fireEvent.change(input, { target: { value: "Hello" } });

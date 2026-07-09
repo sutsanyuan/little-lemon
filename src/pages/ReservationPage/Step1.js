@@ -120,7 +120,8 @@ export default function Step1({ formData, dispatch, nextStep }) {
                             }}
                             isOpen={openDropdown === "adults"}
                             onToggle={() => toggleDropdown("adults")}
-                            isError={!!errors.guests}></AppDropdown>
+                            isError={!!errors.guests}
+                            id="adults"></AppDropdown>
                         <AppDropdown
                             label="Kid"
                             icon={KidIcon}
@@ -128,7 +129,8 @@ export default function Step1({ formData, dispatch, nextStep }) {
                             value={getDisplayValue("Kid", formData.guests.kid)}
                             onChange={(val) => updateGuests("kid", val)}
                             isOpen={openDropdown === "kids"}
-                            onToggle={() => toggleDropdown("kids")}></AppDropdown>
+                            onToggle={() => toggleDropdown("kids")}
+                            id="adults"></AppDropdown>
                     </div>
                     {errors.guests && <p className="errors">{errors.guests}</p>}
                     <h4>Dining Date</h4>
@@ -139,15 +141,21 @@ export default function Step1({ formData, dispatch, nextStep }) {
                             clearError("date");
                         }}
                         isError={errors.date ? true : false}
+                        id="date"
                     />
                     {errors.date && <p className="errors">{errors.date}</p>}
-                    <h4>Require Booth</h4>
+                    <label htmlFor="booth">
+                        <h4>Require Booth</h4>
+                    </label>
 
                     <BooleanToggle
                         value={formData.isBoothRequest}
-                        onChange={(val) => updateField("isBoothRequest", val)}></BooleanToggle>
+                        onChange={(val) => updateField("isBoothRequest", val)}
+                        id="booth"></BooleanToggle>
                     <hr></hr>
-                    <h3>Time</h3>
+                    <label htmlFor="time">
+                        <h3>Time</h3>
+                    </label>
                     <TimePicker
                         availableTimes={formData.availableTimes}
                         selectedTime={formData.time}
@@ -155,9 +163,10 @@ export default function Step1({ formData, dispatch, nextStep }) {
                             updateField("time", time);
                             clearError("time");
                         }}
+                        id="time"
                     />
                     {errors.time && <p className="errors">{errors.time}</p>}
-                    <button className="formBtn" onClick={onConfirm}>
+                    <button className="formBtn" onClick={onConfirm} aria-label="On Click">
                         Next Step
                     </button>
                 </section>

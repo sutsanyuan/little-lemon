@@ -44,7 +44,9 @@ export default function Step2({ formData, dispatch, nextStep, prevStep }) {
                 </section>
                 <section className="formSection">
                     <h3>contact Details</h3>
-                    <h4>Name</h4>
+                    <label htmlFor="firstName">
+                        <h4>Name</h4>
+                    </label>
                     <div className="inputGroupRow">
                         <AppInput
                             value={formData.name.firstName}
@@ -57,6 +59,8 @@ export default function Step2({ formData, dispatch, nextStep, prevStep }) {
                             required
                             min="1"
                             max="30"
+                            id="firstName"
+                            label="firstname"
                         />
                         <AppInput
                             value={formData.name.lastName}
@@ -69,20 +73,33 @@ export default function Step2({ formData, dispatch, nextStep, prevStep }) {
                             required
                             min="1"
                             max="30"
+                            id="lastName"
+                            label="lastName"
                         />
                     </div>
+
                     <h4>Gender</h4>
+
                     {/* radio btn Mr. Ms. N/A or Maybe toggle */}
                     <AppDropdown
-                        label="Occasion"
+                        label="Gender"
                         options={Gender_OPTIONS}
                         value={getDisplayValue("Gender", formData.gender)}
                         onChange={(val) => updateField("gender", val)}
                         isOpen={openDropdown === "gender"}
-                        onToggle={() => toggleDropdown("gender")}></AppDropdown>
-                    <h4>Phone Number</h4>
+                        onToggle={() => toggleDropdown("gender")}
+                        id="gender"></AppDropdown>
+                    <label htmlFor="phoneNumber">
+                        <h4>Phone Number</h4>
+                    </label>
                     <div className="phoneInputRow">
-                        <AppInput value="+1" type="text" disabled className="countryCode" />
+                        <AppInput
+                            value="+1"
+                            type="text"
+                            disabled
+                            className="countryCode"
+                            label="countryCode"
+                        />
                         <AppInput
                             value={formData.phone}
                             onChange={(e) => {
@@ -95,10 +112,14 @@ export default function Step2({ formData, dispatch, nextStep, prevStep }) {
                             className="phoneNumber"
                             required
                             min="9"
+                            id="phoneNumber"
+                            label="phoneNumber"
                         />
                     </div>
 
-                    <h4>Email</h4>
+                    <label htmlFor="email">
+                        <h4>Email</h4>
+                    </label>
                     <AppInput
                         value={formData.email}
                         onChange={(e) => {
@@ -108,6 +129,8 @@ export default function Step2({ formData, dispatch, nextStep, prevStep }) {
                         error={errors.email}
                         placeholder="Email"
                         type="email"
+                        id="email"
+                        label="email"
                     />
 
                     <h4>Ocassion</h4>
@@ -128,10 +151,11 @@ export default function Step2({ formData, dispatch, nextStep, prevStep }) {
                             clearError("note");
                         }}
                         error={errors.note}
+                        id="note"
                         placeholder="Got any special request? Leave it here."
                         rows={4} // 透過 ...rest 直接傳入 textarea 原生屬性
                     />
-                    <button className="formBtn" onClick={onConfirm}>
+                    <button className="formBtn" onClick={onConfirm} aria-label="On Click">
                         Next Step
                     </button>
                 </section>

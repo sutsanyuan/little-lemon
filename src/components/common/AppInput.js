@@ -8,6 +8,7 @@ export default function AppInput({
     error,
     onChange,
     className,
+    showLabel = false,
     ...rest
 }) {
     // 1. 明確處理你關心的邏輯
@@ -16,12 +17,13 @@ export default function AppInput({
     // 2. 剩下的屬性 (如 id, type, placeholder) 直接透傳
     return (
         <div className="input-group">
-            {label && <label htmlFor={id}>{label}</label>}
+            {showLabel && label && <label htmlFor={id}>{label}</label>}
             <input
                 id={id}
                 type={type}
                 className={combinedClass}
                 onChange={onChange}
+                aria-label={label}
                 {...rest} // 這裡透傳剩下的所有原生屬性
             />
             {error && <p className="errors">{error}</p>}

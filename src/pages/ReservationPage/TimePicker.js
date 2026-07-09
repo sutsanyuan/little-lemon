@@ -7,11 +7,20 @@ import checkIcon from "../../assets/icons/check.svg";
 //     { label: "Noon", times: ["11:00", "11:30", "12:00", "12:30", "13:00"] },
 //     { label: "Evening", times: ["17:00", "17:30", "18:00", "18:30", "19:00"] },
 // ];
-export default function TimePicker({ availableTimes, selectedTime, onTimeSelect }) {
+export default function TimePicker({ availableTimes, selectedTime, onTimeSelect, id }) {
     //define selectable time
 
     return (
         <div className="time-picker-container">
+            <input
+                id={id}
+                required
+                tabIndex={-1}
+                style={{ opacity: 0, position: "absolute", pointerEvents: "none" }}
+                value={selectedTime || ""}
+                onChange={() => {}}
+                aria-label="time-input"
+            />
             {availableTimes.map((category) => (
                 <div key={category.label} className="time-category">
                     <h4>{category.label}</h4>
