@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
-import { format, parseISO } from "date-fns";
+import { format } from "date-fns";
 import arrowIcon from "../../assets/icons/arrowDown.svg";
 import calenderIcon from "../../assets/icons/calender.svg";
 import "react-datepicker/dist/react-datepicker.css"; // 引入基本樣式
@@ -16,6 +16,15 @@ export default function CustomDateInput({ selectedDate, onDateChange, isError })
     };
     return (
         <div className={`custom-datepicker-container ${isError ? "errorInput" : ""}`}>
+            {/* 這一行是為了 HTML5 驗證與測試用的隱藏欄位 */}
+            <input
+                required
+                tabIndex={-1}
+                style={{ opacity: 0, position: "absolute", pointerEvents: "none" }}
+                value={selectedDate || ""}
+                onChange={() => {}}
+                aria-label="date-input"
+            />
             {/* 顯示欄位 */}
             <div className="input-box " onClick={() => setIsOpen(!isOpen)}>
                 <img src={calenderIcon}></img>

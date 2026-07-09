@@ -54,6 +54,9 @@ export default function Step2({ formData, dispatch, nextStep, prevStep }) {
                             }}
                             error={errors.firstName}
                             placeholder="Name"
+                            required
+                            min="1"
+                            max="30"
                         />
                         <AppInput
                             value={formData.name.lastName}
@@ -63,6 +66,9 @@ export default function Step2({ formData, dispatch, nextStep, prevStep }) {
                             }}
                             error={errors.lastName}
                             placeholder="Surname"
+                            required
+                            min="1"
+                            max="30"
                         />
                     </div>
                     <h4>Gender</h4>
@@ -87,6 +93,8 @@ export default function Step2({ formData, dispatch, nextStep, prevStep }) {
                             placeholder="Phone Number"
                             type="tel"
                             className="phoneNumber"
+                            required
+                            min="9"
                         />
                     </div>
 

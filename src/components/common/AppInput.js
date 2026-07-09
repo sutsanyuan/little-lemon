@@ -1,15 +1,24 @@
 import React from "react";
 import "./AppInput.scss";
 
-export default function AppInput({ type = "text", label, error, onChange, className, ...rest }) {
+export default function AppInput({
+    type = "text",
+    label,
+    id,
+    error,
+    onChange,
+    className,
+    ...rest
+}) {
     // 1. 明確處理你關心的邏輯
     const combinedClass = `form-input ${error ? "errorInput" : ""} ${className || ""}`;
 
     // 2. 剩下的屬性 (如 id, type, placeholder) 直接透傳
     return (
         <div className="input-group">
-            {label && <label>{label}</label>}
+            {label && <label htmlFor={id}>{label}</label>}
             <input
+                id={id}
                 type={type}
                 className={combinedClass}
                 onChange={onChange}
