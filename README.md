@@ -48,5 +48,5 @@ src/pages/: Page-level components and routing logic.
 
 *.test.js: Corresponding test files for each feature.
 
-Developed by Su Tsan-Yuan
+Developed by Tsan
 ```
